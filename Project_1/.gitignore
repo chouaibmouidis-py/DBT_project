@@ -13,12 +13,10 @@ wheels/
 # Virtual environments
 .venv
 
-# Data Files
+# Data files
 data/
 *.duckdb
-logs/
 .DS_Store
 
-#dbt generated files
+# dbt generated files
 .user.yml
-
