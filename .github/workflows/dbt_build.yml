@@ -17,7 +17,11 @@ jobs:
         working-directory: Project_1
       - run: uv run python scripts/download_data.py
         working-directory: Project_1
-      - run: uv run dbt build --profiles-dir ../ci
+      - name: Install dbt Fusion (v2)
+        run: |
+          curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update --version 2.0.9
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - run: dbt build --profiles-dir ../ci
         working-directory: Project_1/analytics
       - run: |
           gh release create warehouse --notes "Warehouse — auto-built by dbt" || true
