@@ -3,6 +3,6 @@ analytics:
   outputs:
     prod:
       type: duckdb
-      path: data/analytics.duckdb
+      path: ../data/prod.duckdb
       threads: 4
   
