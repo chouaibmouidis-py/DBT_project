@@ -36,8 +36,12 @@ models:
     columns:
       - name: month
         description: Posting month, truncated from search_date.
+        data_tests:
+          - not_null
       - name: role
         description: Search role (search_term).
+        data_tests:
+          - not_null
       - name: postings
         description: Postings counted for the role that month.
 
@@ -74,3 +78,5 @@ models:
           - unique
       - name: postings
         description: Postings counted for the location.
+        data_tests:
+          - not_null
