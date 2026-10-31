@@ -3,7 +3,7 @@
 [![dbt build & publish](https://github.com/lukebarousse/dbt_Analytics_Engineering_Course/actions/workflows/dbt_build.yml/badge.svg)](https://github.com/lukebarousse/dbt_Analytics_Engineering_Course/actions/workflows/dbt_build.yml)
 [![dbt Docs](https://img.shields.io/badge/dbt_docs-live-blue)](https://lukebarousse.github.io/dbt_Analytics_Engineering_Course/project1/)
 
-![dbt pipeline diagram](img/dbt_pipeline.png)
+![dbt pipeline diagram](../img/dbt_pipeline.png)
 
 A public dbt + DuckDB pipeline over ~692k real job postings, rebuilt and republished automatically on every push.
 

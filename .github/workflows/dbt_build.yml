@@ -14,11 +14,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - run: uv sync
+        working-directory: Project_1
       - run: uv run python scripts/download_data.py
+        working-directory: Project_1
       - run: uv run dbt build --profiles-dir ../ci
-        working-directory: analytics
+        working-directory: Project_1/analytics
       - run: |
           gh release create warehouse --notes "Warehouse — auto-built by dbt" || true
-          gh release upload warehouse data/prod.duckdb --clobber
+          gh release upload warehouse Project_1/data/prod.duckdb --clobber
         env:
           GH_TOKEN: ${{ github.token }}
