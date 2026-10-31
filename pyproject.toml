@@ -10,12 +10,8 @@ requires-python = ">=3.12"
 dependencies = [
     "dbt-core>=1.12",
     "dbt-duckdb>=1.11.1",
-    "duckdb>=2.0.0",
+    "duckdb==1.5.6",
 ]
 
-[project.scripts]
-dbt-project = "dbt_project:main"
-
-[build-system]
-requires = ["uv_build>=0.13.0,<0.14.0"]
-build-backend = "uv_build"
+[tool.uv]
+package = false
