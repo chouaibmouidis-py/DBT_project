@@ -21,7 +21,7 @@ cleaned AS (
         job_title,
         TRIM(company_name) AS company_name,
         job_location,
-        REGEXP_REPLACE(job_via, '^via ', ''),
+        REGEXP_REPLACE(job_via, '^via ', '') AS job_via,
         job_posted_at,
         job_salary,
         job_schedule_type,
@@ -34,7 +34,7 @@ cleaned AS (
         , ARRAY_CONTAINS(
             job_extensions,
             '{{ keyword }}'
-        ) AS has_{{ keyword | lower | replace(' ', '_') }}
+        ) AS has_{{ slugify(keyword) }}
         {% endfor %}
 
     FROM parsed
