@@ -1,5 +1,21 @@
-dbt_packages/
-dbt_internal_packages/
-logs/
+# Python-generated files
 target/
+dbt_packages/
+logs/
 .env
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Data Files
+data/
+*.duckdb
+logs/
+.DS_Store
+

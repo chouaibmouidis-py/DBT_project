@@ -17,3 +17,5 @@ wheels/
 data/
 *.duckdb
 logs/
+.DS_Store
+
