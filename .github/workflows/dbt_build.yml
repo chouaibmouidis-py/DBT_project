@@ -23,6 +23,15 @@ jobs:
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - run: dbt build --profiles-dir ../ci
         working-directory: Project_1/analytics
+      - name: Generate dbt docs into docs/ (served by GitHub Pages)
+        run: dbt docs generate --profiles-dir ../ci --output-dir ../../docs
+        working-directory: Project_1/analytics
+      - name: Commit updated docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git diff --staged --quiet || (git commit -m "Update dbt docs [skip ci]" && git push)
       - run: |
           gh release create warehouse --notes "Warehouse — auto-built by dbt" || true
           gh release upload warehouse Project_1/data/prod.duckdb --clobber
