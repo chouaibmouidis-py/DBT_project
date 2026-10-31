@@ -1,4 +1,4 @@
 {
     "python.terminal.useEnvFile": true,
-    "dbt.dbtMajorVersion": "v1"
+    "dbt.dbtMajorVersion": "v2"
 }
