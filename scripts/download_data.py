@@ -3,7 +3,7 @@
 Students: run this ONCE, from your repo root (the folder with pyproject.toml):
 
     mkdir -p scripts
-    curl -sL -o scripts/download_data.py https://raw.githubusercontent.com/lukebarousse/dbt_Analytics_Engineering_Course/main/project_1/scripts/download_data.py
+    curl -sL -o scripts/download_data.py https://raw.githubusercontent.com/chouaibmouidis-py/DBT_project/blob/master/scripts/download_data.py
     python scripts/download_data.py
 
 Run it FROM THE REPO ROOT, not from inside scripts/ — files land in data/raw/
@@ -15,8 +15,8 @@ already have. If `python` isn't found, your environment isn't activated;
 import urllib.request
 from pathlib import Path
 
-REPO = "lukebarousse/dbt_Analytics_Engineering_Course"
-TAG = "dataset-v1"
+REPO = "chouaibmouidis-py/DBT_project"
+TAG = "v1"
 BASE = f"https://github.com/{REPO}/releases/download/{TAG}"
 
 MONTHS = [
