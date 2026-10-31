@@ -1,0 +1,17 @@
+{% macro parse_salary(part) -%}
+    {% if part == 'min' -%}
+        {% set segment = "SPLIT(job_salary, '–')[0]" %}
+    {%- elif part == 'max' -%}
+        {% set segment = "ELEMENT_AT(SPLIT(job_salary, '–'), -1)" %}
+    {%- else -%}
+        {{ exceptions.raise_compiler_error("parse_salary expects 'min' or 'max', got '" ~ part ~ "'") }}
+    {%- endif %}
+    TRY_CAST(
+        REPLACE(REGEXP_EXTRACT({{ segment }}, '([0-9][0-9,.]*)', 1), ',', '')
+        AS DECIMAL(15, 2)
+    ) * CASE UPPER(REGEXP_EXTRACT({{ segment }}, '[0-9][0-9,.]*([KkMm])', 1))
+        WHEN 'K' THEN 1000
+        WHEN 'M' THEN 1000000
+        ELSE 1
+      END
+{%- endmacro %}

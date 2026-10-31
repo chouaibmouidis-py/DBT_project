@@ -1,4 +1,4 @@
-{% set extention_keywords = [
+{% set extension_keywords = [
     "No degree mentioned",
     "Health insurance",
     "Dental insurance",
@@ -9,6 +9,7 @@ WITH source AS (
     SELECT *
     FROM {{ source('jobs', 'raw_job_postings') }}
     WHERE error IS NOT TRUE
+      AND job_id IS NOT NULL
 ),
 parsed AS (
     SELECT *,
@@ -23,14 +24,23 @@ cleaned AS (
         job_location,
         REGEXP_REPLACE(job_via, '^via ', '') AS job_via,
         job_posted_at,
-        job_salary,
         job_schedule_type,
         job_work_from_home,
         search_time AS searched_at,
         search_date,
         search_term,
-        search_location
-        {% for keyword in extention_keywords %}
+        search_location,
+        job_salary,
+        {{ parse_salary('min') }} AS salary_min,
+        {{ parse_salary('max') }} AS salary_max,
+        -- pay period, read off the end of the text: 'a year', 'an hour'
+        NULLIF(REGEXP_EXTRACT(job_salary, 'an? (year|hour|month|day|week)$', 1), '') AS salary_period,
+        -- currency marker; a salaried row with no marker is stamped USD on purpose
+        CASE
+            WHEN job_salary IS NOT NULL
+            THEN COALESCE(NULLIF(TRIM(REGEXP_EXTRACT(job_salary, '^([^0-9]+)', 1)), ''), 'USD')
+        END AS salary_currency
+        {% for keyword in extension_keywords %}
         , ARRAY_CONTAINS(
             job_extensions,
             '{{ keyword }}'
@@ -39,5 +49,6 @@ cleaned AS (
 
     FROM parsed
 )
-SELECT *
+SELECT *,
+       (salary_min + salary_max) / 2 AS salary_avg
 FROM cleaned

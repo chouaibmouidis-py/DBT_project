@@ -31,7 +31,7 @@ models:
         description: Employer name, trimmed; the natural key into dim_company.
       - name: job_location
         description: Posting location as scraped.
-      - name: source_platform
+      - name: job_via
         description: Posting platform (job_via with the 'via ' scraper artifact stripped, ~6.3k rows).
       - name: job_schedule_type
         description: >
@@ -53,7 +53,7 @@ models:
           course's time axis (~95% of rows are scraped within a day of posting); parsing this
           precisely is a supporter exercise.
       - name: job_salary
-        description: Raw salary text, kept unparsed; the snapshot lesson diffs it across scrapes.
+        description: Raw salary text retained alongside parsed salary measures.
       - name: salary_min
         description: Lower bound parsed from the salary text; the single value when no range is given.
         data_tests:
@@ -112,3 +112,61 @@ models:
           - not_null
       - name: skill_keyword
         description: Skill text as extracted, trimmed.
+
+unit_tests:
+  - name: test_parse_salary_shapes
+    description: "parse_salary handles a range, a single value, and no salary at all"
+    model: stg_job_postings
+    given:
+      - input: source('jobs', 'raw_job_postings')
+        rows:
+          - job_id: 1
+            job_salary: "100K–186K a year"
+            error: false
+            job_extensions_raw: "[]"
+            job_title: null
+            company_name: null
+            job_location: null
+            job_via: null
+            job_posted_at: null
+            job_schedule_type: null
+            job_work_from_home: null
+            search_time: null
+            search_date: null
+            search_term: null
+            search_location: null
+          - job_id: 2
+            job_salary: "32.50 an hour"
+            error: false
+            job_extensions_raw: "[]"
+            job_title: null
+            company_name: null
+            job_location: null
+            job_via: null
+            job_posted_at: null
+            job_schedule_type: null
+            job_work_from_home: null
+            search_time: null
+            search_date: null
+            search_term: null
+            search_location: null
+          - job_id: 3
+            job_salary: null
+            error: false
+            job_extensions_raw: "[]"
+            job_title: null
+            company_name: null
+            job_location: null
+            job_via: null
+            job_posted_at: null
+            job_schedule_type: null
+            job_work_from_home: null
+            search_time: null
+            search_date: null
+            search_term: null
+            search_location: null
+    expect:
+      rows:
+        - {job_id: 1, salary_min: 100000, salary_max: 186000, salary_avg: 143000}
+        - {job_id: 2, salary_min: 32.5, salary_max: 32.5, salary_avg: 32.5}
+        - {job_id: 3, salary_min: null, salary_max: null, salary_avg: null}
