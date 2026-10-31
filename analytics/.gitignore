@@ -19,3 +19,4 @@ data/
 logs/
 .DS_Store
 
+dbt_internal_packages/
