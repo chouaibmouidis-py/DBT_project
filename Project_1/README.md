@@ -19,7 +19,7 @@ A public dbt + DuckDB pipeline over real job postings, rebuilt and republished a
 | **dbt docs** | lineage, descriptions, column tests | [Generate locally](#-docs) |
 | **Public CI** | build + test + publish on every push | [Actions workflow](../.github/workflows/dbt_build.yml) |
 | **Environments** | local `dev` vs CI `prod` targets | [`ci/profiles.yml`](ci/profiles.yml) |
-| **Published warehouse** | one `ATTACH`, queryable by anyone | [Query it](#query-the-published-warehouse) |
+| **Published warehouse** | one `ATTACH`, queryable by anyone | [Query it](#-query-the-published-warehouse) |
 
 ---
 
