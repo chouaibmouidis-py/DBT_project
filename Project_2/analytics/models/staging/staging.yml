@@ -31,7 +31,7 @@ models:
         description: Employer name, trimmed; the natural key into dim_company.
       - name: job_location
         description: Posting location as scraped.
-      - name: job_via
+      - name: source_platform
         description: Posting platform (job_via with the 'via ' scraper artifact stripped, ~6.3k rows).
       - name: job_schedule_type
         description: >
