@@ -11,7 +11,7 @@
 # COMMAND ----------
 
 REPO = "chouaibmouidis-py/DBT_project"
-TAG = "data_set_v1"                      
+TAG = "v1"
 VOLUME = "/Volumes/raw/jobs/files"
 
 MONTHS = [
