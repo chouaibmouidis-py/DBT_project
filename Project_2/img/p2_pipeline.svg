@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title description">
+  <title id="title">Job postings data platform pipeline</title>
+  <desc id="description">Monthly Parquet files from GitHub Releases are ingested into a raw catalog, transformed with dbt on Databricks through staging and intermediate models, then published as analytical marts with snapshots and seeds.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#101722"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#161b22"/>
+      <stop offset="1" stop-color="#121820"/>
+    </linearGradient>
+    <linearGradient id="blueCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#182b41"/>
+      <stop offset="1" stop-color="#142233"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#58a6ff"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#3fb950"/>
+    </marker>
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .title { fill:#e6edf3; font-size:42px; font-weight:700; letter-spacing:.2px; }
+      .subtitle { fill:#8b949e; font-size:17px; font-weight:400; }
+      .section { fill:#e6edf3; font-size:20px; font-weight:700; letter-spacing:1.4px; }
+      .eyebrow { fill:#8b949e; font-size:12px; font-weight:700; letter-spacing:1.5px; }
+      .label { fill:#e6edf3; font-size:18px; font-weight:650; }
+      .body { fill:#b1bac4; font-size:15px; }
+      .small { fill:#8b949e; font-size:13px; }
+      .mono { fill:#c9d1d9; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:14px; }
+      .model { fill:#e6edf3; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:15px; font-weight:650; }
+      .table-line { fill:#30363d; }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#page)"/>
+
+  <text class="title" x="64" y="78">Job Postings Data Platform</text>
+  <text class="subtitle" x="66" y="110">A daily, dbt-powered pipeline on Databricks — from published Parquet files to analytics-ready data</text>
+  <rect x="1627" y="48" width="228" height="38" rx="19" fill="#162333" stroke="#284b70"/>
+  <circle cx="1650" cy="67" r="5" fill="#3fb950"/>
+  <text x="1665" y="72" fill="#c9d1d9" font-size="13" font-weight="650">DAILY SCHEDULED RUN</text>
+  <line x1="64" y1="138" x2="1856" y2="138" stroke="#30363d"/>
+
+  <!-- Source -->
+  <rect x="48" y="172" width="330" height="760" rx="18" fill="url(#panel)" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="70" y="194" width="5" height="24" rx="2.5" fill="#58a6ff"/>
+  <text class="section" x="90" y="213">DATA SOURCE</text>
+  <text class="eyebrow" x="78" y="258">PUBLISHED DATA</text>
+  <rect x="72" y="278" width="282" height="342" rx="14" fill="#0d1117" stroke="#30363d"/>
+  <g transform="translate(137 318)">
+    <path d="M18 0h116l55 55v158a12 12 0 0 1-12 12H18a12 12 0 0 1-12-12V12A12 12 0 0 1 18 0Z" fill="#1c2633" stroke="#718096" stroke-width="2"/>
+    <path d="M134 0v43a12 12 0 0 0 12 12h43" fill="#26364a" stroke="#718096" stroke-width="2"/>
+    <rect x="27" y="86" width="124" height="12" rx="6" fill="#58a6ff" opacity=".8"/>
+    <rect x="27" y="111" width="124" height="9" rx="4.5" fill="#4d5968"/>
+    <rect x="27" y="132" width="124" height="9" rx="4.5" fill="#4d5968"/>
+    <rect x="27" y="153" width="92" height="9" rx="4.5" fill="#4d5968"/>
+    <rect x="26" y="181" width="110" height="29" rx="7" fill="#102b48" stroke="#388bfd"/>
+    <text x="81" y="201" text-anchor="middle" fill="#79c0ff" font-size="13" font-weight="750">PARQUET</text>
+  </g>
+  <text class="label" x="213" y="594" text-anchor="middle">Job postings</text>
+  <text class="body" x="213" y="644" text-anchor="middle">12 monthly files + 1 skills file</text>
+  <rect x="112" y="674" width="202" height="36" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text class="mono" x="213" y="697" text-anchor="middle">GitHub Release</text>
+  <rect x="93" y="748" width="240" height="1" fill="#30363d"/>
+  <text class="eyebrow" x="92" y="783">INPUT FORMAT</text>
+  <text class="body" x="92" y="812">Raw monthly Parquet files</text>
+  <text class="small" x="92" y="841">Versioned and publicly available</text>
+  <circle cx="107" cy="889" r="13" fill="#1f6feb" opacity=".18"/>
+  <path d="M102 889h10m-5-5v10" stroke="#58a6ff" stroke-width="2" stroke-linecap="round"/>
+  <text class="small" x="129" y="894">Source data</text>
+
+  <!-- Ingestion -->
+  <rect x="400" y="172" width="330" height="760" rx="18" fill="url(#panel)" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="422" y="194" width="5" height="24" rx="2.5" fill="#d29922"/>
+  <text class="section" x="442" y="213">INGESTION</text>
+  <text class="eyebrow" x="430" y="258">LANDING ZONE</text>
+  <rect x="424" y="278" width="282" height="566" rx="14" fill="#0d1117" stroke="#30363d"/>
+  <rect x="455" y="310" width="220" height="68" rx="11" fill="#1c2128" stroke="#484f58"/>
+  <circle cx="481" cy="344" r="16" fill="#2d2114" stroke="#9e6a03"/>
+  <path d="M476 350c2-7 8-7 10 0M481 338a3 3 0 1 0 0 6a3 3 0 0 0 0-6" fill="none" stroke="#e3b341" stroke-width="1.8" stroke-linecap="round"/>
+  <text class="model" x="510" y="341">load_raw.py</text>
+  <text class="small" x="510" y="361">Parquet ingestion</text>
+  <line x1="565" y1="378" x2="565" y2="414" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+  <g transform="translate(491 435)">
+    <ellipse cx="74" cy="20" rx="74" ry="20" fill="#253244" stroke="#8b949e" stroke-width="1.5"/>
+    <path d="M0 20v132c0 11 33 20 74 20s74-9 74-20V20" fill="#1a2636" stroke="#8b949e" stroke-width="1.5"/>
+    <ellipse cx="74" cy="152" rx="74" ry="20" fill="#1a2636" stroke="#8b949e" stroke-width="1.5"/>
+    <path d="M1 20c0 11 33 20 73 20s73-9 73-20" fill="none" stroke="#8b949e" stroke-width="1.5"/>
+  </g>
+  <text class="label" x="565" y="644" text-anchor="middle">raw catalog</text>
+  <text class="small" x="565" y="671" text-anchor="middle">Unclean source data</text>
+  <rect x="456" y="714" width="218" height="42" rx="9" fill="#211b13" stroke="#5b4528"/>
+  <text x="565" y="740" text-anchor="middle" fill="#e3b341" font-size="13" font-weight="650">LAND RAW, TRANSFORM LATER</text>
+  <text class="small" x="565" y="795" text-anchor="middle">Files are loaded before</text>
+  <text class="small" x="565" y="817" text-anchor="middle">dbt builds the warehouse.</text>
+
+  <!-- Flow source to ingestion -->
+  <path d="M355 468H420" fill="none" stroke="#8b949e" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="353" y="427" width="77" height="26" rx="13" fill="#161b22" stroke="#30363d"/>
+  <text x="391" y="445" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="650">FILES</text>
+
+  <!-- Transformation boundary -->
+  <rect x="752" y="172" width="1120" height="760" rx="18" fill="url(#panel)" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="774" y="194" width="5" height="24" rx="2.5" fill="#f78166"/>
+  <text class="section" x="794" y="213">TRANSFORMATION</text>
+  <text class="small" x="1050" y="212">dbt models · tests · documentation</text>
+  <rect x="1767" y="190" width="77" height="30" rx="15" fill="#2d1f1b" stroke="#6e3028"/>
+  <text x="1805" y="210" text-anchor="middle" fill="#ff7b72" font-size="12" font-weight="750">dbt</text>
+
+  <!-- Stage models -->
+  <rect x="780" y="260" width="332" height="326" rx="14" fill="#111923" stroke="#3d4855"/>
+  <path d="M794 260h304a14 14 0 0 1 14 14v48H780v-48a14 14 0 0 1 14-14Z" fill="#202c39"/>
+  <text x="946" y="294" text-anchor="middle" fill="#79c0ff" font-size="18" font-weight="700">STAGING</text>
+  <text class="small" x="946" y="342" text-anchor="middle">Cleaned · typed · source-aligned</text>
+  <rect x="804" y="366" width="284" height="74" rx="9" fill="#161b22" stroke="#3d4855"/>
+  <rect x="804" y="366" width="284" height="30" rx="9" fill="#263443"/>
+  <path d="M804 387v9h284v-9" fill="#263443"/>
+  <text class="model" x="946" y="387" text-anchor="middle">stg_job_postings</text>
+  <rect class="table-line" x="820" y="410" width="252" height="8" rx="4"/>
+  <rect class="table-line" x="820" y="424" width="206" height="7" rx="3.5"/>
+  <rect x="804" y="456" width="284" height="74" rx="9" fill="#161b22" stroke="#3d4855"/>
+  <rect x="804" y="456" width="284" height="30" rx="9" fill="#263443"/>
+  <path d="M804 477v9h284v-9" fill="#263443"/>
+  <text class="model" x="946" y="477" text-anchor="middle">stg_job_skills</text>
+  <rect class="table-line" x="820" y="500" width="252" height="8" rx="4"/>
+  <rect class="table-line" x="820" y="514" width="206" height="7" rx="3.5"/>
+
+  <!-- Intermediate -->
+  <rect x="1150" y="260" width="274" height="326" rx="14" fill="#111923" stroke="#3d4855"/>
+  <path d="M1164 260h246a14 14 0 0 1 14 14v48h-274v-48a14 14 0 0 1 14-14Z" fill="#202c39"/>
+  <text x="1287" y="294" text-anchor="middle" fill="#a5d6ff" font-size="18" font-weight="700">INTERMEDIATE</text>
+  <text class="small" x="1287" y="342" text-anchor="middle">Business-ready structures</text>
+  <rect x="1172" y="390" width="230" height="92" rx="9" fill="#161b22" stroke="#3d4855"/>
+  <rect x="1172" y="390" width="230" height="32" rx="9" fill="#263443"/>
+  <path d="M1172 412v10h230v-10" fill="#263443"/>
+  <text class="model" x="1287" y="412" text-anchor="middle">int_skill_observations</text>
+  <rect class="table-line" x="1188" y="437" width="198" height="8" rx="4"/>
+  <rect class="table-line" x="1188" y="453" width="162" height="7" rx="3.5"/>
+
+  <!-- Marts -->
+  <rect x="1462" y="260" width="380" height="468" rx="14" fill="#191a18" stroke="#5b4b28"/>
+  <path d="M1476 260h352a14 14 0 0 1 14 14v48h-380v-48a14 14 0 0 1 14-14Z" fill="#332b19"/>
+  <text x="1652" y="294" text-anchor="middle" fill="#e3b341" font-size="18" font-weight="700">ANALYTICAL MARTS</text>
+  <text class="small" x="1652" y="342" text-anchor="middle">Dimensional models · reporting-ready</text>
+  <rect x="1484" y="370" width="154" height="74" rx="8" fill="#1c1d1b" stroke="#7d652c"/>
+  <rect x="1484" y="370" width="154" height="28" rx="8" fill="#463916"/>
+  <path d="M1484 389v9h154v-9" fill="#463916"/>
+  <text x="1561" y="390" text-anchor="middle" fill="#e3b341" font-size="13" font-family="ui-monospace, monospace" font-weight="700">dim_company</text>
+  <rect class="table-line" x="1496" y="411" width="130" height="8" rx="4"/>
+  <rect class="table-line" x="1496" y="425" width="104" height="7" rx="3.5"/>
+  <rect x="1662" y="370" width="158" height="74" rx="8" fill="#1c1d1b" stroke="#7d652c"/>
+  <rect x="1662" y="370" width="158" height="28" rx="8" fill="#463916"/>
+  <path d="M1662 389v9h158v-9" fill="#463916"/>
+  <text x="1741" y="390" text-anchor="middle" fill="#e3b341" font-size="13" font-family="ui-monospace, monospace" font-weight="700">dim_skill</text>
+  <rect class="table-line" x="1674" y="411" width="134" height="8" rx="4"/>
+  <rect class="table-line" x="1674" y="425" width="108" height="7" rx="3.5"/>
+  <rect x="1543" y="476" width="218" height="82" rx="8" fill="#211d13" stroke="#a27e22" stroke-width="1.3"/>
+  <rect x="1543" y="476" width="218" height="31" rx="8" fill="#493b17"/>
+  <path d="M1543 498v9h218v-9" fill="#493b17"/>
+  <text x="1652" y="497" text-anchor="middle" fill="#f2cc60" font-size="14" font-family="ui-monospace, monospace" font-weight="750">fct_job_postings</text>
+  <rect class="table-line" x="1558" y="519" width="188" height="8" rx="4"/>
+  <rect class="table-line" x="1558" y="535" width="152" height="7" rx="3.5"/>
+  <rect x="1601" y="584" width="212" height="54" rx="8" fill="#1c1d1b" stroke="#7d652c"/>
+  <rect x="1601" y="584" width="212" height="27" rx="8" fill="#463916"/>
+  <path d="M1601 603v8h212v-8" fill="#463916"/>
+  <text x="1707" y="603" text-anchor="middle" fill="#e3b341" font-size="13" font-family="ui-monospace, monospace" font-weight="700">bridge_job_skills</text>
+  <text x="1652" y="686" text-anchor="middle" fill="#8b949e" font-size="12">Incremental fact table · supporting dimensions</text>
+
+  <!-- Main flow arrows -->
+  <path d="M706 490H770" fill="none" stroke="#8b949e" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M1112 425H1140" fill="none" stroke="#8b949e" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M1424 425H1452" fill="none" stroke="#8b949e" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="704" y="450" width="86" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+  <text x="747" y="467" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="650">DBT BUILD</text>
+
+  <!-- Snapshot lane -->
+  <path d="M946 586V630" fill="none" stroke="#58a6ff" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrowBlue)"/>
+  <rect x="780" y="648" width="644" height="228" rx="14" fill="url(#blueCard)" stroke="#2f5f92"/>
+  <rect x="800" y="667" width="604" height="40" rx="9" fill="#1d2d44"/>
+  <text x="1102" y="694" text-anchor="middle" fill="#79c0ff" font-size="16" font-weight="700">SNAPSHOTS · SCD TYPE 2</text>
+  <rect x="818" y="731" width="302" height="86" rx="9" fill="#101a27" stroke="#2f5f92"/>
+  <rect x="830" y="743" width="278" height="30" rx="6" fill="#182c43"/>
+  <text x="969" y="764" text-anchor="middle" fill="#79c0ff" font-size="14" font-family="ui-monospace, monospace" font-weight="700">job_postings_snapshot</text>
+  <rect x="834" y="783" width="270" height="8" rx="4" fill="#30363d"/>
+  <rect x="834" y="798" width="222" height="7" rx="3.5" fill="#30363d"/>
+  <text class="body" x="1148" y="766">Preserves posting history</text>
+  <text class="small" x="1148" y="791">New states are appended, not rebuilt.</text>
+  <text class="small" x="1148" y="815">Changes tracked over time.</text>
+
+  <!-- Seeds -->
+  <rect x="1462" y="754" width="380" height="122" rx="14" fill="#132119" stroke="#2f6f43"/>
+  <rect x="1482" y="770" width="340" height="34" rx="8" fill="#1b3824"/>
+  <text x="1652" y="793" text-anchor="middle" fill="#56d364" font-size="15" font-weight="700">SEEDS</text>
+  <rect x="1514" y="820" width="276" height="38" rx="7" fill="#101a14" stroke="#2f6f43"/>
+  <text x="1652" y="844" text-anchor="middle" fill="#7ee787" font-size="13" font-family="ui-monospace, monospace" font-weight="650">skill_categories.csv</text>
+  <path d="M1652 753V643" fill="none" stroke="#3fb950" stroke-width="2" stroke-dasharray="5 6" marker-end="url(#arrowGreen)"/>
+
+  <!-- Footer -->
+  <line x1="64" y1="967" x2="1856" y2="967" stroke="#30363d"/>
+  <g transform="translate(72 991)" fill="none" stroke="#ff6a4d" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M17 0 34 10 17 20 0 10Z"/>
+    <path d="M0 17 17 27 34 17"/>
+    <path d="M0 24 17 34 34 24"/>
+  </g>
+  <text x="124" y="1015" fill="#e6edf3" font-size="17" font-weight="700">Databricks</text>
+  <text x="238" y="1015" fill="#8b949e" font-size="15">A scheduled Databricks job runs <tspan fill="#c9d1d9" font-weight="650">dbt build</tspan> every day.</text>
+  <rect x="1630" y="990" width="225" height="34" rx="17" fill="#161b22" stroke="#30363d"/>
+  <circle cx="1651" cy="1007" r="5" fill="#3fb950"/>
+  <text x="1666" y="1012" fill="#c9d1d9" font-size="12" font-weight="650">TESTED · DOCUMENTED · VERSIONED</text>
+</svg>

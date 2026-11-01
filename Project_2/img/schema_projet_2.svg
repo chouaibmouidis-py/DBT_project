@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1180" viewBox="0 0 1900 1180" role="img" aria-labelledby="title description">
+  <title id="title">Project 2 — dbt and Databricks data pipeline</title>
+  <desc id="description">Data lineage from GitHub Releases through Databricks raw tables and dbt staging, intermediate, and mart models to the SCD2 snapshot and analytics consumers.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#101722"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#58a6ff"/>
+    </marker>
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .title { fill:#e6edf3; font-size:36px; font-weight:750; }
+      .subtitle { fill:#8b949e; font-size:16px; }
+      .column { fill:#e6edf3; font-size:15px; font-weight:750; letter-spacing:1.2px; }
+      .card-title { fill:#e6edf3; font-size:16px; font-weight:700; }
+      .card-sub { fill:#b1bac4; font-size:12px; }
+      .code { fill:#c9d1d9; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:14px; font-weight:650; }
+      .small { fill:#8b949e; font-size:12px; }
+      .tiny { fill:#8b949e; font-size:11px; }
+      .arrow { fill:none; stroke:#8b949e; stroke-width:2.2; marker-end:url(#arrow); }
+      .arrow-blue { fill:none; stroke:#58a6ff; stroke-width:2.2; marker-end:url(#arrowBlue); }
+      .link { fill:none; stroke:#8b949e; stroke-width:2; }
+      .card { fill:#161b22; stroke:#30363d; stroke-width:1.4; }
+    </style>
+  </defs>
+
+  <rect width="1900" height="1180" fill="url(#background)"/>
+  <text class="title" x="58" y="65">Project 2 — data architecture</text>
+  <text class="subtitle" x="60" y="94">Databricks ingestion · dbt transformations · analytics-ready schema · SCD2 history</text>
+
+  <rect x="58" y="120" width="1784" height="150" rx="18" fill="#161b22" stroke="#30363d"/>
+  <text class="column" x="82" y="151">ORCHESTRATION — SCHEDULED DATABRICKS JOB</text>
+
+  <rect x="84" y="171" width="300" height="72" rx="12" fill="#162333" stroke="#284b70"/>
+  <text class="card-title" x="105" y="199">GitHub Release · v1</text>
+  <text class="card-sub" x="105" y="222">12 monthly Parquet files + skills</text>
+
+  <path class="arrow" d="M384 207 H453"/>
+  <rect x="465" y="171" width="300" height="72" rx="12" fill="#211b13" stroke="#5b4528"/>
+  <text class="code" x="486" y="199">load_raw.py</text>
+  <text class="card-sub" x="486" y="222">Downloads and lands the raw tables</text>
+
+  <path class="arrow" d="M765 207 H834"/>
+  <rect x="846" y="171" width="330" height="72" rx="12" fill="#161b22" stroke="#30363d"/>
+  <text class="card-title" x="867" y="199">Unity Catalog · raw.jobs</text>
+  <text class="card-sub" x="867" y="222">raw_job_postings · raw_job_skills</text>
+
+  <path class="arrow" d="M1176 207 H1245"/>
+  <rect x="1257" y="171" width="550" height="72" rx="12" fill="#162333" stroke="#284b70"/>
+  <text class="card-title" x="1278" y="199">dbt · deps → debug → build → snapshot</text>
+  <text class="card-sub" x="1278" y="222">Models, seeds, tests, and snapshots run in Databricks</text>
+
+  <text class="column" x="60" y="322">RAW SOURCE</text>
+  <text class="column" x="430" y="322">STAGING</text>
+  <text class="column" x="830" y="322">INTERMEDIATE / SEED / HISTORY</text>
+  <text class="column" x="1200" y="322">MARTS</text>
+  <text class="column" x="1595" y="322">CONSUMERS</text>
+
+  <rect x="48" y="340" width="322" height="682" rx="18" fill="#161b22" stroke="#30363d"/>
+  <rect x="418" y="340" width="322" height="682" rx="18" fill="#142033" stroke="#284b70"/>
+  <rect x="808" y="340" width="322" height="682" rx="18" fill="#1c1a28" stroke="#3b2e58"/>
+  <rect x="1178" y="340" width="322" height="682" rx="18" fill="#14231d" stroke="#28513b"/>
+  <rect x="1568" y="340" width="284" height="682" rx="18" fill="#211b13" stroke="#5b4528"/>
+
+  <g>
+    <rect class="card" x="72" y="390" width="274" height="96" rx="12"/>
+    <rect x="72" y="390" width="6" height="96" rx="3" fill="#64748b"/>
+    <text class="code" x="94" y="422">raw_job_postings</text>
+    <text class="card-sub" x="94" y="447">One row per posting per scrape</text>
+    <text class="tiny" x="94" y="467">Unmodified source data · raw catalog</text>
+
+    <rect class="card" x="72" y="620" width="274" height="96" rx="12"/>
+    <rect x="72" y="620" width="6" height="96" rx="3" fill="#64748b"/>
+    <text class="code" x="94" y="652">raw_job_skills</text>
+    <text class="card-sub" x="94" y="677">Extracted posting / skill pairs</text>
+    <text class="tiny" x="94" y="697">Unmodified source data · raw catalog</text>
+  </g>
+
+  <g>
+    <rect class="card" x="442" y="390" width="274" height="96" rx="12"/>
+    <rect x="442" y="390" width="6" height="96" rx="3" fill="#3b82f6"/>
+    <text class="code" x="464" y="422">stg_job_postings</text>
+    <text class="card-sub" x="464" y="447">Cleans salaries and attributes</text>
+    <text class="tiny" x="464" y="467">Drops error rows and null job_id values</text>
+
+    <rect class="card" x="442" y="620" width="274" height="96" rx="12"/>
+    <rect x="442" y="620" width="6" height="96" rx="3" fill="#3b82f6"/>
+    <text class="code" x="464" y="652">stg_job_skills</text>
+    <text class="card-sub" x="464" y="677">Cleans IDs and skill labels</text>
+    <text class="tiny" x="464" y="697">Grain: one row per observed pair</text>
+
+    <rect class="card" x="442" y="850" width="274" height="96" rx="12"/>
+    <rect x="442" y="850" width="6" height="96" rx="3" fill="#8b5cf6"/>
+    <text class="code" x="464" y="882">stg_job_postings_current</text>
+    <text class="card-sub" x="464" y="907">Latest version per job_id at as_of</text>
+    <text class="tiny" x="464" y="927">Ephemeral model · snapshot input</text>
+  </g>
+
+  <g>
+    <rect class="card" x="832" y="620" width="274" height="96" rx="12"/>
+    <rect x="832" y="620" width="6" height="96" rx="3" fill="#8b5cf6"/>
+    <text class="code" x="854" y="652">int_skill_observations</text>
+    <text class="card-sub" x="854" y="677">Counts postings by skill_id</text>
+    <text class="tiny" x="854" y="697">Re-aggregated from staging</text>
+
+    <rect class="card" x="832" y="850" width="274" height="96" rx="12"/>
+    <rect x="832" y="850" width="6" height="96" rx="3" fill="#a78bfa"/>
+    <text class="code" x="854" y="882">skill_categories</text>
+    <text class="card-sub" x="854" y="907">Skill taxonomy seed (CSV)</text>
+    <text class="tiny" x="854" y="927">Version-controlled reference data</text>
+  </g>
+
+  <g>
+    <rect class="card" x="1202" y="390" width="274" height="96" rx="12"/>
+    <rect x="1202" y="390" width="6" height="96" rx="3" fill="#10b981"/>
+    <text class="code" x="1224" y="422">fct_job_postings</text>
+    <text class="card-sub" x="1224" y="447">Latest posting per job_id</text>
+    <text class="tiny" x="1224" y="467">Incremental fact · merge on job_id</text>
+
+    <rect class="card" x="1202" y="530" width="274" height="96" rx="12"/>
+    <rect x="1202" y="530" width="6" height="96" rx="3" fill="#10b981"/>
+    <text class="code" x="1224" y="562">dim_company</text>
+    <text class="card-sub" x="1224" y="587">Aggregates by company</text>
+    <text class="tiny" x="1224" y="607">Key: company_name</text>
+
+    <rect class="card" x="1202" y="670" width="274" height="96" rx="12"/>
+    <rect x="1202" y="670" width="6" height="96" rx="3" fill="#10b981"/>
+    <text class="code" x="1224" y="702">bridge_job_skills</text>
+    <text class="card-sub" x="1224" y="727">Maps job postings to skills</text>
+    <text class="tiny" x="1224" y="747">Joins staging skills + fact</text>
+
+    <rect class="card" x="1202" y="850" width="274" height="96" rx="12"/>
+    <rect x="1202" y="850" width="6" height="96" rx="3" fill="#10b981"/>
+    <text class="code" x="1224" y="882">dim_skill</text>
+    <text class="card-sub" x="1224" y="907">Taxonomy + aggregated observations</text>
+    <text class="tiny" x="1224" y="927">Key: skill_id</text>
+
+    <rect class="card" x="832" y="390" width="274" height="96" rx="12"/>
+    <rect x="832" y="390" width="6" height="96" rx="3" fill="#f59e0b"/>
+    <text class="code" x="854" y="422">job_postings_snapshot</text>
+    <text class="card-sub" x="854" y="447">SCD2 history · check strategy</text>
+    <text class="tiny" x="854" y="467">Tracks 13 columns · key: job_id</text>
+  </g>
+
+  <g>
+    <rect x="1592" y="530" width="236" height="128" rx="14" fill="#211b13" stroke="#5b4528" stroke-width="1.4"/>
+    <text class="card-title" x="1614" y="562">Analytics &amp; BI</text>
+    <text class="card-sub" x="1614" y="589">Databricks SQL · Power BI</text>
+    <text class="card-sub" x="1614" y="610">Excel · Tableau</text>
+    <text class="tiny" x="1614" y="638">Queries published marts</text>
+
+    <rect x="1592" y="770" width="236" height="96" rx="14" fill="#211b13" stroke="#5b4528" stroke-width="1.4"/>
+    <text class="card-title" x="1614" y="802">dbt quality checks</text>
+    <text class="card-sub" x="1614" y="827">Generic, singular,</text>
+    <text class="card-sub" x="1614" y="847">and unit tests</text>
+  </g>
+
+  <path class="arrow" d="M346 438 H442"/>
+  <path class="arrow" d="M716 438 H780 V370 H1158 V438 H1202"/>
+  <path class="arrow" d="M346 668 H442"/>
+  <path class="arrow" d="M716 668 H832"/>
+  <path class="arrow" d="M1106 668 H1158 V898 H1202"/>
+  <path class="arrow" d="M1106 898 H1160 V930 H1202"/>
+
+  <path class="arrow" d="M1339 486 V530"/>
+  <path class="arrow" d="M1210 486 H1188 V718 H1202"/>
+  <path class="arrow" d="M716 668 H780 V790 H1180 V718 H1202"/>
+  <path class="arrow" d="M442 462 H425 V898 H442"/>
+  <path class="arrow-blue" d="M716 898 H770 V438 H832"/>
+  <path class="arrow" d="M1476 578 H1592"/>
+  <path class="arrow" d="M1476 718 H1548 V630 H1592"/>
+  <path class="arrow" d="M1476 898 H1560 V650 H1592"/>
+
+  <path class="link" stroke-dasharray="6 6" d="M1530 243 H1545 V818 H1592"/>
+
+  <rect x="58" y="1050" width="1784" height="76" rx="14" fill="#161b22" stroke="#30363d"/>
+  <circle cx="87" cy="1088" r="6" fill="#8b949e"/>
+  <text class="small" x="103" y="1093">Data flow</text>
+  <circle cx="282" cy="1088" r="6" fill="#58a6ff"/>
+  <text class="small" x="298" y="1093">SCD2 history</text>
+  <line x1="480" y1="1088" x2="526" y2="1088" stroke="#8b949e" stroke-width="2" stroke-dasharray="6 6"/>
+  <text class="small" x="540" y="1093">Quality checks</text>
+  <text class="small" x="1720" y="1093" text-anchor="end">Environments: dev / prod catalogs</text>
+</svg>
