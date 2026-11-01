@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='merge',
+        unique_key='job_id'
+    )
+    
+    }}
+
 WITH job_postings AS (
     SELECT
         *,
@@ -28,4 +37,12 @@ SELECT
     has_paid_time_off,
     has_no_degree_mentioned
 FROM job_postings
-WHERE row_number = 1
+
+{% if is_incremental() %}
+WHERE search_date > (SELECT MAX(search_date) FROM {{ this }})
+{% endif %}
+
+QUALIFY ROW_NUMBER() OVER (
+            PARTITION BY job_id
+            ORDER BY searched_at DESC
+        ) = 1
