@@ -7,3 +7,12 @@ or pass `--target-path <DIR>` pointing at a directory that contains it.
 14:30:22.438785 [info ]: 
 ==================== Execution Summary =====================
 Finished 'docs' with 1 error [220ms]
+==================== 2026-11-01T16:44:31.262938Z | 01a197ff-9277-7112-81fb-b8ddee2db25e ====================
+16:44:31.275634 [error]: [Generic (dbt1000)]: dbt docs serve: no data to serve
+
+Information schema not found: ./target/info_schema/v1
+Run `dbt build` or `dbt docs generate` to write it,
+or pass `--target-path <DIR>` pointing at a directory that contains it.
+16:44:31.834865 [info ]: 
+==================== Execution Summary =====================
+Finished 'docs' with 1 error [571ms]

@@ -84,7 +84,7 @@ Snapshot analysis has also highlighted that Meta edited the most postings (415) 
 
 ## 📖 Documentation
 
-The [Project 2 dbt documentation site](https://chouaibmouidis-py.github.io/DBT_project/project2/) presents:
+The [Project 2 dbt documentation site](https://chouaibmouidis-py.github.io/DBT_project/) presents:
 
 - The full lineage graph: raw → staging → intermediate → marts → snapshot
 - Model and column descriptions defined in the project YAML files
