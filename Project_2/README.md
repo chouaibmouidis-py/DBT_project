@@ -1,6 +1,6 @@
 # Production Job Postings Pipeline (v2)
 
-[![dbt Docs](https://img.shields.io/badge/dbt_docs-live-blue)](https://github.com/chouaibmouidis-py/DBT_project/tree/master/Project_2/)
+[![dbt Docs](https://img.shields.io/badge/dbt_docs-live-blue)](https://chouaibmouidis-py.github.io/DBT_project/project2/)
 ![Databricks](https://img.shields.io/badge/warehouse-Databricks-FF3621)
 
 ![Project 2 pipeline architecture](img/p2_pipeline.svg)
@@ -84,7 +84,7 @@ Snapshot analysis has also highlighted that Meta edited the most postings (415) 
 
 ## 📖 Documentation
 
-The [Project 2 dbt documentation site](https://lukebarousse.github.io/dbt_Analytics_Engineering_Course/project2/) presents:
+The [Project 2 dbt documentation site](https://chouaibmouidis-py.github.io/DBT_project/project2/) presents:
 
 - The full lineage graph: raw → staging → intermediate → marts → snapshot
 - Model and column descriptions defined in the project YAML files
@@ -149,4 +149,10 @@ Project_2/
 
 ---
 
-*Reference build for Project #2 of the [dbt for Data Analytics & Engineering course](https://www.lukebarousse.com) (lessons 3.01–4.02). Students build this project themselves and compare it with this reference. Dataset: real job postings scraped daily from July 2025 through June 2026.*
+## 👨‍💻 Author
+**Chouaib MOUID**
+***Data Engineer***
+
+📫 Contact & Liens
+- LinkedIn : [MOUID / Chouaib](https://www.linkedin.com/in/chouaib-mouid-200893438/)
+- GitHub : [Chouaib-mouid](https://github.com/chouaibmouidis-py)
