@@ -11,7 +11,7 @@ A production-oriented **dbt and Databricks** pipeline that transforms **843,097 
 - **504,591 historical versions** tracked with SCD2 snapshots
 - Incremental fact loading and nightly orchestration on Databricks
 
-> **Project evolution:** [v1](../project_1/) established the foundations with DuckDB and GitHub Actions. This v2 moves the same dataset to Databricks and adds a medallion architecture, incremental models, SCD2 history, and scheduled production runs.
+> **Project evolution:** [v1](https://github.com/chouaibmouidis-py/DBT_project/tree/master/Project_1) established the foundations with DuckDB and GitHub Actions. This v2 moves the same dataset to Databricks and adds a medallion architecture, incremental models, SCD2 history, and scheduled production runs.
 
 ## ✨ Project at a glance
 
